@@ -1,0 +1,29 @@
+# Alternative configuration formats for different Goose Desktop versions
+
+# Format 1: Simple tools configuration
+[tools]
+calendar = "goose_calendar.toolkit:CalendarToolkit"
+
+# Format 2: Detailed extension configuration
+[extensions]
+calendar = {
+    module = "goose_calendar.toolkit",
+    class = "CalendarToolkit",
+    enabled = true,
+    description = "Google Calendar integration"
+}
+
+# Format 3: Plugin-style configuration
+[plugins]
+calendar = {
+    name = "Google Calendar",
+    path = "goose_calendar.toolkit:CalendarToolkit",
+    version = "0.1.0",
+    enabled = true
+}
+
+# Format 4: Entry points style
+[entry_points]
+"goose.toolkit" = [
+    "calendar = goose_calendar.toolkit:CalendarToolkit"
+]

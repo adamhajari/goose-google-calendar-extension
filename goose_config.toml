@@ -1,0 +1,15 @@
+# Goose Configuration for Calendar Extension
+
+[toolkits]
+# Enable the calendar toolkit
+calendar = "goose_calendar.toolkit:CalendarToolkit"
+
+[providers]
+# Add your preferred AI provider here
+# Example for OpenAI:
+# openai.api_key = "your-api-key"
+
+[settings]
+# Optional settings for the calendar extension
+calendar.default_timezone = "America/New_York"
+calendar.max_events = 20
