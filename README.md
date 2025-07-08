@@ -61,7 +61,7 @@ This extension is structured as an **MCP server** for Goose Desktop integration.
 
 ### Step 1: Install Dependencies
 
-1. **Clone and install the extension**:
+1a. **Clone and install the extension**:
    ```bash
    git clone https://github.com/adamhajari/goose-google-calendar-extension.git
    cd goose-google-calendar-extension
@@ -70,7 +70,7 @@ This extension is structured as an **MCP server** for Goose Desktop integration.
    pip install -e .
    ```
 
-2. **Set up Google Calendar API credentials** (same as above in main Installation section)
+1b. **Set up Google Calendar API credentials** (same as above in main Installation section)
 
 ### Step 2: Get Your Command Path
 
