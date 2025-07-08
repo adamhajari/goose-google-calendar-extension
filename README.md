@@ -13,8 +13,8 @@ A custom Goose extension that allows you to list, add, and edit Google Calendar 
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/goose-calendar-extension.git
-cd goose-calendar-extension
+git clone https://github.com/adamhajari/goose-google-calendar-extension.git
+cd goose-google-calendar-extension
 ```
 
 2. Install the extension:
@@ -57,95 +57,85 @@ The extension will prompt you to authenticate with Google Calendar on first use.
 
 ## Installation for Goose Desktop
 
-The Goose desktop application handles extensions differently than the command-line version. Here's how to set up the Google Calendar extension:
+This extension is structured as an **MCP server** for Goose Desktop integration.
 
-### Method 1: Install via Package Manager
+### Step 1: Install Dependencies
 
-1. **Install the extension globally**:
+1. **Clone and install the extension**:
    ```bash
+   git clone https://github.com/adamhajari/goose-google-calendar-extension.git
+   cd goose-google-calendar-extension
+   python3 -m venv venv
+   source venv/bin/activate
    pip install -e .
    ```
-   (You've already done this step)
 
-2. **Create a global configuration file**:
-   Create or edit `~/.config/goose/goose.toml`:
-   ```toml
-   [tools]
-   calendar = "goose_calendar.toolkit:CalendarToolkit"
-   ```
+2. **Set up Google Calendar API credentials** (same as above in main Installation section)
 
-3. **Restart Goose Desktop** to load the new extension
+### Step 2: Get Your Command Path
 
-### Method 2: Manual Configuration in Goose Desktop
-
-1. **Open Goose Desktop**
-2. **Go to Settings/Preferences**
-3. **Look for "Extensions" or "Toolkits" section**
-4. **Add the calendar toolkit**:
-   - Toolkit name: `calendar`
-   - Module path: `goose_calendar.toolkit:CalendarToolkit`
-
-### Method 3: Configuration File Location
-
-The desktop version might look for configuration in different locations:
-- **macOS**: `~/Library/Application Support/Goose/goose.toml`
-- **Windows**: `%APPDATA%/Goose/goose.toml`
-- **Linux**: `~/.config/goose/goose.toml`
-
-Create the configuration file in the appropriate location:
-```toml
-[tools]
-calendar = "goose_calendar.toolkit:CalendarToolkit"
-
-[settings]
-# Optional calendar settings
-calendar.default_timezone = "America/New_York"
-calendar.max_events = 20
+```bash
+cd {path-to-repo}
+source venv/bin/activate
+which python
 ```
 
-### Verification Steps
+Copy the output (e.g., `{path-to-repo}/venv/bin/python`)
 
-1. **Restart Goose Desktop** after adding the configuration
-2. **Test the extension** by asking Goose:
-   - "List my calendar events"
-   - "What's on my calendar today?"
-   - "Add a meeting tomorrow at 2 PM"
+### Step 3: Add Extension in Goose Desktop
 
-### Troubleshooting Desktop Version
+1. **Open Goose Desktop**
+2. **Go to Settings > Extensions > Add**
+3. **Fill in these fields**:
 
-If the extension doesn't appear:
+   | Field | Value |
+   |-------|-------|
+   | **Type** | `StandardIO` |
+   | **ID** | `calendar` |
+   | **Name** | `Google Calendar` |
+   | **Description** | `Google Calendar integration - list, add, edit, and delete calendar events` |
+   | **Command** | `[YOUR_PATH_FROM_STEP_2] -m goose_calendar` |
 
-1. **Check Goose Desktop logs** (usually in the app's menu under Help > Show Logs)
-2. **Verify Python environment**: The desktop version might use a different Python environment
-3. **Install in system Python**: Try installing the extension in your system Python:
+   Replace `[YOUR_PATH_FROM_STEP_2]` with the path you copied.
+
+4. **Save** and **Restart** Goose Desktop
+
+### Step 4: Test the Extension
+
+Ask Goose: "What tools do you have?"
+
+You should see calendar tools like:
+- `list_calendar_events`
+- `add_calendar_event`
+- `edit_calendar_event`
+- `delete_calendar_event`
+
+### Example Commands
+
+- "List my calendar events for today"
+- "Add a meeting tomorrow at 2 PM"
+- "What's on my calendar this week?"
+
+### Troubleshooting
+
+If the extension doesn't work:
+
+1. **Test the command manually** in Terminal:
    ```bash
-   pip3 install -e . --break-system-packages
-   ```
-4. **Check extension loading**: Look for error messages about "calendar" toolkit in the logs
-
-## ✅ Ready for Goose Desktop
-
-This extension is now properly structured as an **MCP server** and ready to be added to Goose Desktop! 
-
-### Quick Setup for Goose Desktop
-
-1. **Get your command path**:
-   ```bash
-   cd /Users/adamhajari/Develop/goose-calendar-ext-cp
+   cd {path-to-repo}
    source venv/bin/activate
-   which python
+   python -m goose_calendar
+   ```
+   (It should start and wait for input - press Ctrl+C to stop)
+
+2. **Try alternative command** in Goose Desktop:
+   ```
+   {path-to-repo}/venv/bin/python {path-to-repo}/src/goose_calendar/mcp_server.py
    ```
 
-2. **Add extension in Goose Desktop**:
-   - Go to Settings > Extensions > Add
-   - Type: `StandardIO`
-   - ID: `calendar`
-   - Name: `Google Calendar`
-   - Command: `[YOUR_PATH_FROM_STEP_1] -m goose_calendar`
+3. **Check the logs** in Goose Desktop developer tools
 
-3. **Restart Goose Desktop** and test with: "What tools do you have?"
-
-For detailed setup instructions, see **[GOOSE_DESKTOP_SETUP.md](GOOSE_DESKTOP_SETUP.md)**
+For more detailed troubleshooting, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
 
 ## Development
 

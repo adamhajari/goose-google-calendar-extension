@@ -7,12 +7,12 @@ This guide shows you how to add the Google Calendar extension to Goose Desktop.
 Open Terminal and run:
 
 ```bash
-cd /Users/adamhajari/Develop/goose-calendar-ext-cp
+cd {path-to-repo}
 source venv/bin/activate
 which python
 ```
 
-Copy the output (it will look like `/Users/adamhajari/Develop/goose-calendar-ext-cp/venv/bin/python`).
+Copy the output 
 
 ## Step 2: Add Extension in Goose Desktop
 
@@ -54,7 +54,7 @@ If it doesn't work:
 
 1. **Test the command manually** in Terminal:
    ```bash
-   cd /Users/adamhajari/Develop/goose-calendar-ext-cp
+   cd {path-to-repo}
    source venv/bin/activate
    python -m goose_calendar
    ```
@@ -62,7 +62,7 @@ If it doesn't work:
 
 2. **Try alternative command** in Goose Desktop:
    ```
-   /Users/adamhajari/Develop/goose-calendar-ext-cp/venv/bin/python /Users/adamhajari/Develop/goose-calendar-ext-cp/src/goose_calendar/mcp_server.py
+   {path-to-repo}/venv/bin/python {path-to-repo}/src/goose_calendar/mcp_server.py
    ```
 
 3. **Check the logs** in Goose Desktop developer tools

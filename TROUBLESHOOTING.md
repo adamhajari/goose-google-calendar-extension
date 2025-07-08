@@ -146,7 +146,7 @@ Based on the official Goose documentation, Goose Desktop expects extensions to b
 First, make sure the extension is properly installed:
 
 ```bash
-cd /Users/adamhajari/Develop/goose-calendar-ext-cp
+cd {path-to-repo}
 source venv/bin/activate
 pip install -e .
 ```
@@ -156,12 +156,12 @@ pip install -e .
 Run this to get the exact Python path for your command:
 
 ```bash
-cd /Users/adamhajari/Develop/goose-calendar-ext-cp
+cd {path-to-repo}
 source venv/bin/activate
 which python
 ```
 
-This will output something like: `/Users/adamhajari/Develop/goose-calendar-ext-cp/venv/bin/python`
+This will output something like: `{path-to-repo}/venv/bin/python`
 
 ### Step 3: Add Extension to Goose Desktop
 
@@ -173,9 +173,9 @@ This will output something like: `/Users/adamhajari/Develop/goose-calendar-ext-c
    - **ID**: `calendar` 
    - **Name**: `Google Calendar`
    - **Description**: `Google Calendar integration - list, add, edit, and delete calendar events`
-   - **Command**: `/Users/adamhajari/Develop/goose-calendar-ext-cp/venv/bin/python -m goose_calendar`
+   - **Command**: `{path-to-repo}/venv/bin/python -m goose_calendar`
 
-   **Important**: Replace `/Users/adamhajari/Develop/goose-calendar-ext-cp/venv/bin/python` with the actual path from Step 2.
+   **Important**: Replace `{path-to-repo}/venv/bin/python` with the actual path from Step 2.
 
 4. **Save the extension**
 5. **Restart Goose Desktop**
@@ -186,12 +186,12 @@ If the above doesn't work, try these command variations:
 
 **Option A**: Direct server file
 ```
-/Users/adamhajari/Develop/goose-calendar-ext-cp/venv/bin/python /Users/adamhajari/Develop/goose-calendar-ext-cp/src/goose_calendar/mcp_server.py
+{path-to-repo}/venv/bin/python {path-to-repo}/src/goose_calendar/mcp_server.py
 ```
 
 **Option B**: With directory change (use this as a single command)
 ```
-cd /Users/adamhajari/Develop/goose-calendar-ext-cp && source venv/bin/activate && python -m goose_calendar
+cd {path-to-repo} && source venv/bin/activate && python -m goose_calendar
 ```
 
 ### Step 5: Verify Extension is Working
@@ -290,7 +290,7 @@ If Goose Desktop has a development mode:
 
 1. **Enable Developer Mode** (if available in settings)
 2. **Add Local Extension Path**: Point to your project directory
-   - Path: `/Users/adamhajari/Develop/goose-calendar-ext-cp/src`
+   - Path: `{path-to-repo}/src`
 3. **Import**: `goose_calendar.toolkit:CalendarToolkit`
 
 ### Troubleshooting Manual Setup
@@ -302,7 +302,7 @@ If Goose Desktop has a development mode:
    # Find where Goose Desktop's Python is
    which python3
    # Install there too
-   /path/to/goose/python -m pip install -e /Users/adamhajari/Develop/goose-calendar-ext-cp
+   /path/to/goose/python -m pip install -e {path-to-repo}
    ```
 
 2. **Check Extension Loading Errors**:
@@ -312,7 +312,7 @@ If Goose Desktop has a development mode:
 3. **Alternative Installation**:
    ```bash
    # Install with all dependencies globally
-   pip3 install --user -e /Users/adamhajari/Develop/goose-calendar-ext-cp
+   pip3 install --user -e {path-to-repo}
    ```
 
 4. **Verify Installation Location**:
